@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity{
 
     TouchImageView floorSet;
 
-    int width;
+
     Button one;
     Button two;
     Button three;

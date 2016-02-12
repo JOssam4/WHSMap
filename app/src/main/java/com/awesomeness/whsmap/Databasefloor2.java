@@ -79,7 +79,8 @@ public class Databasefloor2 {
         elements.put(251, room251);
     }
 
-    public static boolean doesExist(int roomNum){
+    public static boolean doesExist(int roomNum)
+    {
         return elements.containsKey(roomNum);
     }
 }

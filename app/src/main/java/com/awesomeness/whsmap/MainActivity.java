@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.awesomeness.whsmap.Databasefloor1;
 import android.content.Intent;
 import com.awesomeness.whsmap.Databasefloor2;
+import com.awesomeness.whsmap.Databasefloor3;
 
 
 import java.util.ArrayList;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity{
         Databasefloor1.putInDataBase();
         Databasefloor1.oneDataBase();
         Databasefloor2.putInBase();
+        Databasefloor3.putInBase();
 
         textbox = (EditText) findViewById(R.id.editText);
 
@@ -142,6 +144,18 @@ public class MainActivity extends AppCompatActivity{
                         System.out.println(Databasefloor2.doesExist(Integer.parseInt(search.getQuery().toString())));
                         System.out.println(Integer.parseInt(textbox.getText().toString()));
                         System.out.println(Databasefloor2.doesExist(Integer.parseInt(textbox.getText().toString())));
+                    }
+                }
+                else if((query.charAt(0) == '3') && (textbox.getText().toString().charAt(0) == '3')){
+                    if ((Databasefloor3.doesExist(Integer.parseInt(search.getQuery().toString()))) && Databasefloor3.doesExist(Integer.parseInt(textbox.getText().toString()))){
+                        floorSet.setImageResource(R.drawable.floorthree);
+                        int[] coordFrom = Databasefloor3.elements.get(Integer.parseInt(textbox.getText().toString()));
+                        int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
+                        int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
+                        int[] coordTo = Databasefloor3.elements.get(Integer.parseInt(search.getQuery().toString()));
+                        int[] coordToDoubled = {coordTo[0]*multiplier, coordTo[1]*multiplier};
+                        drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                        search.clearFocus();
                     }
                 }
                 search.clearFocus();

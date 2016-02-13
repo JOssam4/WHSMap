@@ -252,6 +252,11 @@ public class MainActivity extends AppCompatActivity{
             doX(fromCoord, toCoord, test, floorImg);
             doY(fromCoord, toCoord, test, floorImg);
         }
+        else if((fromCoord[0] > toCoord[0]) && (fromCoord[1] < toCoord[1])){
+            doX(fromCoord, toCoord, test, floorImg);
+            doY(fromCoord, toCoord, test, floorImg);
+        }
+
         else{
             doY(fromCoord, toCoord, test, floorImg);
             doX(fromCoord, toCoord, test, floorImg);

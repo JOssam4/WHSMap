@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity{
         Databasefloor1.oneDataBase();
         Databasefloor2.putInBase();
         Databasefloor3.putInBase();
+        Databasefloor4.putInBase();
 
         textbox = (EditText) findViewById(R.id.editText);
 
@@ -153,6 +154,18 @@ public class MainActivity extends AppCompatActivity{
                         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
                         int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
                         int[] coordTo = Databasefloor3.elements.get(Integer.parseInt(search.getQuery().toString()));
+                        int[] coordToDoubled = {coordTo[0]*multiplier, coordTo[1]*multiplier};
+                        drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                        search.clearFocus();
+                    }
+                }
+                else if((query.charAt(0) == '4') && (textbox.getText().toString().charAt(0) == '4')){
+                    if ((Databasefloor4.doesExist((Integer.parseInt(search.getQuery().toString())))) && Databasefloor4.doesExist(Integer.parseInt(textbox.getText().toString()))){
+                        floorSet.setImageResource(R.drawable.floorfour);
+                        int[] coordFrom = Databasefloor4.elements.get(Integer.parseInt(textbox.getText().toString()));
+                        int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
+                        int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
+                        int[] coordTo = Databasefloor4.elements.get(Integer.parseInt(search.getQuery().toString()));
                         int[] coordToDoubled = {coordTo[0]*multiplier, coordTo[1]*multiplier};
                         drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
                         search.clearFocus();
@@ -248,7 +261,12 @@ public class MainActivity extends AppCompatActivity{
         Bitmap stest = ((BitmapDrawable) image.getDrawable()).getBitmap();
         Bitmap test = stest.copy(stest.getConfig(), true);
         //System.out.println("Color is: "+test.getPixel(0,10));
-        if ((fromCoord[0] < toCoord[0])){
+        if ((fromCoord[0] < toCoord[0]) && (fromCoord[1] > toCoord[1])){
+            doY(fromCoord, toCoord, test, floorImg);
+            doX(fromCoord, toCoord, test, floorImg);
+        }
+
+        else if ((fromCoord[0] < toCoord[0] && !(fromCoord[1] > toCoord[1]))){
             doX(fromCoord, toCoord, test, floorImg);
             doY(fromCoord, toCoord, test, floorImg);
         }

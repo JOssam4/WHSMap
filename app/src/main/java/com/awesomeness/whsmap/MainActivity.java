@@ -261,18 +261,21 @@ public class MainActivity extends AppCompatActivity{
         Bitmap stest = ((BitmapDrawable) image.getDrawable()).getBitmap();
         Bitmap test = stest.copy(stest.getConfig(), true);
         //System.out.println("Color is: "+test.getPixel(0,10));
-        if ((fromCoord[0] < toCoord[0]) && (fromCoord[1] > toCoord[1])){
+        if ((fromCoord[0] < toCoord[0]) && (fromCoord[1] < toCoord[1])){
             doY(fromCoord, toCoord, test, floorImg);
             doX(fromCoord, toCoord, test, floorImg);
+            System.out.println("gone1");
         }
 
-        else if ((fromCoord[0] < toCoord[0] && !(fromCoord[1] > toCoord[1]))){
+        else if ((fromCoord[0] < toCoord[0] && (!(fromCoord[1] < toCoord[1])))){
             doX(fromCoord, toCoord, test, floorImg);
             doY(fromCoord, toCoord, test, floorImg);
+            System.out.println("gone2");
         }
         else if((fromCoord[0] > toCoord[0]) && (fromCoord[1] < toCoord[1])){
             doX(fromCoord, toCoord, test, floorImg);
             doY(fromCoord, toCoord, test, floorImg);
+            System.out.println("gone3");
         }
 
         else{
@@ -287,33 +290,34 @@ public class MainActivity extends AppCompatActivity{
                     test.setPixel(x, fromCoord[1] - 1, Color.RED);
                 }
                 floorImg.setImageBitmap(test);
-                System.out.println("Run1");
             } else if (fromCoord[0] > toCoord[0]) {
                 for (int x = fromCoord[0]; x > toCoord[0]; x--) {
                     test.setPixel(x, fromCoord[1], Color.RED);
                     test.setPixel(x, fromCoord[1] + 1, Color.RED);
                 }
                 floorImg.setImageBitmap(test);
-                System.out.println("Run2");
             }
         }
 
         public void doY(int[] fromCoord, int[] toCoord, Bitmap test, ImageView floorImg) {
             if (fromCoord[1] < toCoord[1]) {
                 for (int y = fromCoord[1]; y < toCoord[1]; y++) {
-                    test.setPixel(toCoord[0], y, Color.RED);
-                    test.setPixel(toCoord[0] - 1, y, Color.RED);
+                    //test.setPixel(toCoord[0], y, Color.RED);
+                    //test.setPixel(toCoord[0] - 1, y, Color.RED);
+                    test.setPixel(fromCoord[0], y, Color.RED);
+                    test.setPixel(fromCoord[0]-1, y, Color.RED);
 
                 }
                 floorImg.setImageBitmap(test);
-                System.out.println("Run3");
             } else if (fromCoord[1] > toCoord[1]) {
                 for (int y = fromCoord[1]; y > toCoord[1]; y--) {
-                    test.setPixel(toCoord[0], y, Color.RED);
-                    test.setPixel(toCoord[0] + 1, y, Color.RED);
+                    //test.setPixel(toCoord[0], y, Color.RED);
+                    //test.setPixel(toCoord[0] + 1, y, Color.RED);
+                    test.setPixel(fromCoord[0], y, Color.RED);
+                    test.setPixel(fromCoord[0] + 1, y, Color.RED);
+
                 }
                 floorImg.setImageBitmap(test);
-                System.out.println("Run4");
         }
     }
 }

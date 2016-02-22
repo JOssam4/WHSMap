@@ -64,10 +64,13 @@ public class Databasefloor1 {
     public static int[] topRightHallStart = {451, 306};
     public static int[] topRightHallEnd = {451, 200};
 
+    public static int[] mainStair = {308, 310};
+
     public static HashMap<Integer, int[]> elements = new HashMap<Integer, int[]>();
     public static HashMap<String, int[]> others = new HashMap<String, int[]>();
     public static HashMap<Integer, Integer> intersX = new HashMap<>();
     public static HashMap<Integer, Integer> intersY = new HashMap<>();
+    public static HashMap<String, int[]> stairs = new HashMap<>();
 
     public static void putInDataBase() {
         elements.put(108, room108);
@@ -135,6 +138,7 @@ public class Databasefloor1 {
         intersX.put(482, 308);
         intersY.put(306, 451);
         intersY.put(200, 451);
+        stairs.put("Main", mainStair);
     }
 
     public static boolean doesExist(int roomNum) {

@@ -8,6 +8,7 @@ import java.util.HashMap;
     public class Databasefloor3 {
 
     public static HashMap<Integer, int[]> elements = new HashMap<>();
+    public static HashMap<String, int[]> stairs =  new HashMap<>();
 
     public static int[] room319 = {168, 305};
     public static int[] room318 = {168, 295};
@@ -42,6 +43,8 @@ import java.util.HashMap;
     public static int[] room306 = {240, 208};
     public static int[] room305 = {240, 201};
     public static int[] room301 = {240, 165};
+
+    public static int[] mainStair = {293, 296};
 
     public static void putInBase(){
         elements.put(319, room319);
@@ -78,6 +81,8 @@ import java.util.HashMap;
         elements.put(306, room306);
         elements.put(305, room305);
         elements.put(301, room301);
+
+        stairs.put("Main", mainStair);
     }
 
     public static boolean doesExist(int roomNum){

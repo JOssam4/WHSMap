@@ -6,6 +6,7 @@ import java.util.HashMap;
  */
 public class Databasefloor2 {
     public static HashMap<Integer, int[]> elements = new HashMap<>();
+    public static HashMap<String, int[]> stairs = new HashMap<>();
 
 
     public static int[] room228 = {165, 288};
@@ -42,6 +43,8 @@ public class Databasefloor2 {
     public static int[] room252 = {250, 269};
     public static int[] room251 = {454, 270};
 
+    public static int[] mainStair = {288, 290};
+
 
     public static void putInBase(){
         elements.put(228, room228);
@@ -77,6 +80,8 @@ public class Databasefloor2 {
         elements.put(253, room253);
         elements.put(252, room252);
         elements.put(251, room251);
+
+        stairs.put("Main", mainStair);
     }
 
     public static boolean doesExist(int roomNum)

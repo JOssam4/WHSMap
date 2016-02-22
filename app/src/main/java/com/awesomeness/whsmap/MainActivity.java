@@ -178,12 +178,12 @@ public class MainActivity extends AppCompatActivity{
                     System.out.println("gone");
                     if ((Databasefloor1.doesExist(firstRoom)) || Databasefloor2.doesExist(firstRoom) || Databasefloor3.doesExist(firstRoom) || Databasefloor4.doesExist(firstRoom)){
                         System.out.println("gal");
-                        if ((Databasefloor1.doesExist(secondRoom)) || Databasefloor2.doesExist(secondRoom) || Databasefloor3.doesExist(secondRoom) || Databasefloor4.doesExist(secondRoom)){
+                        if ((Databasefloor1.doesExist(secondRoom)) || Databasefloor2.doesExist(secondRoom) || Databasefloor3.doesExist(secondRoom) || Databasefloor4.doesExist(secondRoom)) {
                             char floorNum2 = query.charAt(0);
                             char floorNum1 = textbox.getText().toString().charAt(0);
-                            int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
+                            int multiplier = (finalWidth > 568 && finalHeight > 441) ? 3 : 1;
                             System.out.println("garl");
-                            if (floorNum1 == '1'){
+                            if (floorNum1 == '1') {
                                 floorSet.setImageResource(R.drawable.floorone);
                                 int[] coordFrom = Databasefloor1.elements.get(firstRoom);
                                 System.out.println(firstRoom);
@@ -194,33 +194,29 @@ public class MainActivity extends AppCompatActivity{
                                 System.out.println(coordTo);
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
                                 System.out.println("going");
-                                }
+                            } else if (floorNum1 == '2') {
+                                floorSet.setImageResource(R.drawable.floortwo);
+                                int[] coordFrom = Databasefloor2.elements.get(firstRoom);
+                                int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
+                                int[] coordTo = Databasefloor2.stairs.get("Main");
+                                int[] coordToDoubled = {coordTo[0] * multiplier, coordTo[1] * multiplier};
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                            } else if (floorNum1 == '3') {
+                                floorSet.setImageResource(R.drawable.floorthree);
+                                int[] coordFrom = Databasefloor3.elements.get(firstRoom);
+                                int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
+                                int[] coordTo = Databasefloor3.stairs.get("Main");
+                                int[] coordToDoubled = {coordTo[0] * multiplier, coordTo[1] * multiplier};
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                            } else {
+                                floorSet.setImageResource(R.drawable.floorfour);
+                                int[] coordFrom = Databasefloor4.elements.get(firstRoom);
+                                int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
+                                int[] coordTo = Databasefloor4.stairs.get("Main");
+                                int[] coordToDoubled = {coordTo[0] * multiplier, coordTo[1] * multiplier};
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
                             }
-                        //    else if(floorNum1 == '2'){
-                        //        floorSet.setImageResource(R.drawable.floortwo);
-                        //        int[] coordFrom = Databasefloor2.elements.get(firstRoom);
-                        //        int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
-                        //        int[] coordTo = Databasefloor2.stairs.get("Main");
-                        //        int[] coordToDoubled = {coordTo[0]*multiplier, coordTo[1]*multiplier};
-                        //        drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
-                        //    }
-                        //    else if(floorNum1 == '3'){
-                        //        floorSet.setImageResource(R.drawable.floorthree);
-                        //        int[] coordFrom = Databasefloor3.elements.get(firstRoom);
-                        //        int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
-                        //        int[] coordTo = Databasefloor3.stairs.get("Main");
-                        //        int[] coordToDoubled = {coordTo[0]*multiplier, coordTo[1]*multiplier};
-                        //        drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
-                        //    }
-                        //    else{
-                        //        floorSet.setImageResource(R.drawable.floorfour);
-                        //        int[] coordFrom = Databasefloor4.elements.get(firstRoom);
-                        //        int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
-                        //        int[] coordTo = Databasefloor4.stairs.get("Main");
-                        //        int[] coordToDoubled = {coordTo[0]*multiplier, coordTo[1]*multiplier};
-                        //        drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
-                        //    }
-
+                        }
                         }
                     }
 

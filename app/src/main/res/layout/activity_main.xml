@@ -114,6 +114,16 @@
             android:id="@+id/imageLooker"
             android:src="@drawable/floorone" />
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See other floor"
+            android:id="@+id/floorMover"
+            android:textAlignment="center"
+            android:onClick="floorMove"
+            android:nestedScrollingEnabled="false" />
+
         <com.awesomeness.whsmap.TouchImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

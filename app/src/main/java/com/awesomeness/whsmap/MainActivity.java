@@ -23,9 +23,9 @@ import android.content.Intent;
 import com.awesomeness.whsmap.Databasefloor2;
 import com.awesomeness.whsmap.Databasefloor3;
 import java.lang.Math;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Set;
@@ -207,11 +207,28 @@ public class MainActivity extends AppCompatActivity{
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
                             } else if (floorNum1 == '3') {
                                 floorSet.setImageResource(R.drawable.floorthree);
+                                System.out.println("num2 = "+floorNum2);
                                 int[] coordFrom = Databasefloor3.elements.get(firstRoom);
-                                int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
-                                int[] coordTo = Databasefloor3.stairs.get("Main");
-                                int[] coordToDoubled = {coordTo[0] * multiplier, coordTo[1] * multiplier};
-                                drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                                int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
+                                int[][] stairCoords = Databasefloor3.stairs.values().toArray(new int[Databasefloor3.stairs.values().size()][]);
+
+                                if ((floorNum2 == '2')||(floorNum2 == '4')){
+                                    ArrayList<int[]> vals = new ArrayList<>();
+                                    for (int[] each : stairCoords) {
+                                        if (!(Arrays.toString(each).equals("[431, 194]"))) {
+                                            System.out.println("deleted hi");
+                                            vals.add(each);
+                                        }
+                                    }
+                                    //System.out.println("deleted: "+vals);
+                                    stairCoords = vals.toArray(new int[vals.size()][]);
+                                }
+
+                                System.out.println("deleted: "+Arrays.deepToString(stairCoords));
+                                int[] closest = findClosestStairCase(coordFrom, stairCoords);
+                                System.out.println("coords: "+Arrays.toString(closest));
+                                int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
                             } else {
                                 floorSet.setImageResource(R.drawable.floorfour);
                                 int[] coordFrom = Databasefloor4.elements.get(firstRoom);
@@ -282,6 +299,22 @@ public class MainActivity extends AppCompatActivity{
     */
        // three.setWidth(width / 4);
        // four.setWidth(width/4);
+
+    public void floorMove(View view) {
+        char toFloor = textbox.getText().toString().charAt(0);
+        if(toFloor == '1'){
+            floorSet.setImageResource(R.drawable.floorone);
+        }
+        else if (toFloor == '2'){
+            floorSet.setImageResource(R.drawable.floortwo);
+        }
+        else if (toFloor == '3'){
+            floorSet.setImageResource(R.drawable.floorthree);
+        }
+        else{
+            floorSet.setImageResource(R.drawable.floorfour);
+        }
+    }
 
     public void oneClick(View view) {
         if (!(floorSet == (TouchImageView) image1)){
@@ -424,8 +457,8 @@ public class MainActivity extends AppCompatActivity{
         //int smallindex = distances.indexOf(smallest);
         //return toCoordList[smallindex];
         double smallest = Collections.min(distances);
-        System.out.println("distances: "+distances);
-        System.out.println("smallest is: "+smallest);
+        //System.out.println("distances: "+distances);
+        //System.out.println("smallest is: "+smallest);
         return distWc.get(smallest);
     }
 
@@ -435,11 +468,11 @@ public class MainActivity extends AppCompatActivity{
         double toX = (double) toCoord[0];
         double toY = (double) toCoord[1];
 
-        System.out.println("frX = "+frX);
-        System.out.println("frY = "+frY);
-        System.out.println("toX = "+toX);
-        System.out.println("toY = "+toY);
-        System.out.println("toX-frX**2="+Math.pow(toX-frX, 2));
+        //System.out.println("frX = "+frX);
+        //System.out.println("frY = "+frY);
+        //System.out.println("toX = "+toX);
+        //System.out.println("toY = "+toY);
+        //System.out.println("toX-frX**2="+Math.pow(toX-frX, 2));
         return Math.sqrt((Math.pow(toX-frX, 2)+(Math.pow(toY-frY, 2))));
 
 

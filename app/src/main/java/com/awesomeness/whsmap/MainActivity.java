@@ -22,9 +22,13 @@ import com.awesomeness.whsmap.Databasefloor1;
 import android.content.Intent;
 import com.awesomeness.whsmap.Databasefloor2;
 import com.awesomeness.whsmap.Databasefloor3;
-
+import java.lang.Math;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Set;
 import java.util.logging.Logger;
 
 
@@ -211,10 +215,36 @@ public class MainActivity extends AppCompatActivity{
                             } else {
                                 floorSet.setImageResource(R.drawable.floorfour);
                                 int[] coordFrom = Databasefloor4.elements.get(firstRoom);
-                                int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
-                                int[] coordTo = Databasefloor4.stairs.get("Main");
-                                int[] coordToDoubled = {coordTo[0] * multiplier, coordTo[1] * multiplier};
-                                drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                                int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
+                                int[][] stairCoords = Databasefloor4.stairs.values().toArray(new int[Databasefloor4.stairs.values().size()][]);
+                                System.out.println(Arrays.deepToString(stairCoords));
+                                int[] closest = findClosestStairCase(coordFrom, stairCoords);
+                                System.out.println("coords: "+Arrays.toString(closest));
+                                int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, closest);
+
+                                //floorSet.setImageResource(R.drawable.floorfour);
+                                //int[] coordFrom = Databasefloor4.elements.get(firstRoom);
+                                //int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
+//
+                                //Set<String> stairNames = Databasefloor4.stairs.keySet();
+                                ////String[] stairnames =  stairNames.toArray();
+                                //String[] stairnames = stairNames.toArray(new String[stairNames.size()]);
+                                //int[][] stairCoords = new int[stairnames.length-1][];
+                                ////for (String each : stairnames){
+                                ////    int index = stairnames
+                                ////    stairCoords[]
+                                ////}
+
+                                //for (int i = 0; i < stairnames.length-1; i++) {
+                                //    stairCoords[i] = Databasefloor4.stairs.get(stairnames[i]);
+                                //}
+                                //int[] toCoord = findClosestStairCase(coordFrom, stairCoords);
+                                //drawFromCoordToCoord(floorSet, coordFrom, toCoord);
+                                //System.out.println("reach");
+                                //System.out.println(toCoord[0]);
+                                //System.out.println(toCoord[1]);
+
                             }
                         }
                         }
@@ -375,6 +405,44 @@ public class MainActivity extends AppCompatActivity{
                 }
                 floorImg.setImageBitmap(test);
         }
+    }
+    public int[] findClosestStairCase(int[] fromCoord, int[][] toCoordList){
+        ArrayList<Double> distances = new ArrayList<>();
+        HashMap<Double, int[]> distWc = new HashMap<>();
+        for (int[] each : toCoordList){
+            double dist = distanceFormula(each, fromCoord);
+            System.out.println("dist: "+dist);
+            distances.add(dist);
+            distWc.put(dist, each);
+        }
+    //double smallest = distances.get(0);
+     //   for (double each : distances){
+     //       if (each < smallest){
+    //            smallest = each;
+    //        }
+    //    }
+        //int smallindex = distances.indexOf(smallest);
+        //return toCoordList[smallindex];
+        double smallest = Collections.min(distances);
+        System.out.println("distances: "+distances);
+        System.out.println("smallest is: "+smallest);
+        return distWc.get(smallest);
+    }
+
+    public double distanceFormula(int[] toCoord, int[] fromCoord){
+        double frX = (double) fromCoord[0];
+        double frY = (double) fromCoord[1];
+        double toX = (double) toCoord[0];
+        double toY = (double) toCoord[1];
+
+        System.out.println("frX = "+frX);
+        System.out.println("frY = "+frY);
+        System.out.println("toX = "+toX);
+        System.out.println("toY = "+toY);
+        System.out.println("toX-frX**2="+Math.pow(toX-frX, 2));
+        return Math.sqrt((Math.pow(toX-frX, 2)+(Math.pow(toY-frY, 2))));
+
+
     }
 }
 

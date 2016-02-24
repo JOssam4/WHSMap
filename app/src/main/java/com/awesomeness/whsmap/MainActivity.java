@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity{
                                 int[] closest = findClosestStairCase(coordFrom, stairCoords);
                                 System.out.println("coords: "+Arrays.toString(closest));
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
-                                drawFromCoordToCoord(floorSet, coordFromDoubled, closest);
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
 
                                 //floorSet.setImageResource(R.drawable.floorfour);
                                 //int[] coordFrom = Databasefloor4.elements.get(firstRoom);

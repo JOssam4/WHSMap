@@ -45,6 +45,11 @@ import java.util.HashMap;
     public static int[] room301 = {240, 165};
 
     public static int[] mainStair = {293, 296};
+    public static int[] LStair = {144, 299};
+    public static int[] BStair = {252, 400};
+    public static int[] TStair = {243,156};
+    public static int[] RStair = {456,290};
+    public static int[] AWStair = {431, 194}; //art wing stair
 
     public static void putInBase(){
         elements.put(319, room319);
@@ -83,6 +88,11 @@ import java.util.HashMap;
         elements.put(301, room301);
 
         stairs.put("Main", mainStair);
+        stairs.put("LStair", LStair);
+        stairs.put("BStair", BStair);
+        stairs.put("RStair", RStair);
+        stairs.put("TStair", TStair);
+        stairs.put("AWStair", AWStair);
     }
 
     public static boolean doesExist(int roomNum){

@@ -44,6 +44,10 @@ public class Databasefloor2 {
     public static int[] room251 = {454, 270};
 
     public static int[] mainStair = {288, 290};
+    public static int[] LStair = {140, 294};
+    public static int[] BStair = {248,392};
+    public static int[] RStair = {449,284};
+    public static int[] TStair = {238, 20};
 
 
     public static void putInBase(){
@@ -82,6 +86,10 @@ public class Databasefloor2 {
         elements.put(251, room251);
 
         stairs.put("Main", mainStair);
+        stairs.put("LStair", LStair);
+        stairs.put("RStair", RStair);
+        stairs.put("TStair", TStair);
+        stairs.put("BStair", BStair);
     }
 
     public static boolean doesExist(int roomNum)

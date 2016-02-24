@@ -38,6 +38,10 @@ public class Databasefloor4 {
     public static int[] room410 = {239, 250};
 
     public static int[] mainStair = {292, 295};
+    public static int[] LStair = {142,294};
+    public static int[] BStair = {247,400};
+    public static int[] RStair = {455,297};
+    public static int[] TStair = {242,157};
 
     public static HashMap<Integer, int[]>elements = new HashMap<>();
     public static HashMap<String, int[]> stairs = new HashMap<>();
@@ -75,6 +79,10 @@ public static void putInBase(){
     elements.put(410, room410);
 
     stairs.put("Main", mainStair);
+    stairs.put("LStair", LStair);
+    stairs.put("BStair", BStair);
+    stairs.put("RStair", RStair);
+    stairs.put("TStair", TStair);
 }
 
 public static boolean doesExist(int roomnum){

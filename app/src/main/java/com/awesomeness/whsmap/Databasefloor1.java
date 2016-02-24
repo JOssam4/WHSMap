@@ -65,6 +65,12 @@ public class Databasefloor1 {
     public static int[] topRightHallEnd = {451, 200};
 
     public static int[] mainStair = {308, 310};
+    public static int[] LStair = {151, 316};
+    public static int[] BStair = {264, 421};
+    public static int[] RStair = {477, 308};
+    public static int[] BandStair = {450, 205};
+    public static int[] TStair = {254, 28};
+    public static int[] GStair = {148, 41};
 
     public static HashMap<Integer, int[]> elements = new HashMap<Integer, int[]>();
     public static HashMap<String, int[]> others = new HashMap<String, int[]>();
@@ -138,7 +144,14 @@ public class Databasefloor1 {
         intersX.put(482, 308);
         intersY.put(306, 451);
         intersY.put(200, 451);
+
         stairs.put("Main", mainStair);
+        stairs.put("LStair", LStair);
+        stairs.put("RStair", RStair);
+        stairs.put("BStair", BStair);
+        stairs.put("BandStair", BandStair);
+        stairs.put("TStair", TStair);
+        stairs.put("GStair", GStair);
     }
 
     public static boolean doesExist(int roomNum) {

@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity{
     int finalHeight;
     int finalWidth;
 
+    int[] closest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,7 +216,7 @@ public class MainActivity extends AppCompatActivity{
                                     //System.out.println("deleted: "+vals);
                                     stairCoords = vals.toArray(new int[vals.size()][]);
                                 }
-                                int[] closest = findClosestStairCase(coordFrom, stairCoords);
+                                closest = findClosestStairCase(coordFrom, stairCoords);
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
                             } else if (floorNum1 == '3') {
@@ -237,7 +239,7 @@ public class MainActivity extends AppCompatActivity{
                                 }
 
                                 System.out.println("deleted: "+Arrays.deepToString(stairCoords));
-                                int[] closest = findClosestStairCase(coordFrom, stairCoords);
+                                closest = findClosestStairCase(coordFrom, stairCoords);
                                 System.out.println("coords: "+Arrays.toString(closest));
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
@@ -247,7 +249,7 @@ public class MainActivity extends AppCompatActivity{
                                 int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
                                 int[][] stairCoords = Databasefloor4.stairs.values().toArray(new int[Databasefloor4.stairs.values().size()][]);
                                 System.out.println(Arrays.deepToString(stairCoords));
-                                int[] closest = findClosestStairCase(coordFrom, stairCoords);
+                                closest = findClosestStairCase(coordFrom, stairCoords);
                                 System.out.println("coords: "+Arrays.toString(closest));
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
@@ -313,9 +315,11 @@ public class MainActivity extends AppCompatActivity{
        // four.setWidth(width/4);
 
     public void floorMove(View view) {
-        char toFloor = textbox.getText().toString().charAt(0);
+        char toFloor = search.getQuery().charAt(0);
         if(toFloor == '1'){
             floorSet.setImageResource(R.drawable.floorone);
+            int[] lastStairCoord = closest;
+
         }
         else if (toFloor == '2'){
             floorSet.setImageResource(R.drawable.floortwo);

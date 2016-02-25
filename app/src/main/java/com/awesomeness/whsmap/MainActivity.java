@@ -315,11 +315,22 @@ public class MainActivity extends AppCompatActivity{
        // four.setWidth(width/4);
 
     public void floorMove(View view) {
+        int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
         char toFloor = search.getQuery().charAt(0);
         if(toFloor == '1'){
             floorSet.setImageResource(R.drawable.floorone);
             int[] lastStairCoord = closest;
-
+            ArrayList<int[]> stairCoords = new ArrayList<>();
+            for (int[] each : Databasefloor1.stairs.values()){
+                stairCoords.add(each);
+            }
+            int[][] vals = stairCoords.toArray(new int[stairCoords.size()][]);
+            System.out.println(Arrays.deepToString(vals));
+            int[] closestair = findClosestStairCase(lastStairCoord, vals);
+            int[] closestairDoubled = {closestair[0]*multiplier, closestair[1]*multiplier};
+            int[] room = Databasefloor1.elements.get(Integer.parseInt(search.getQuery().toString()));
+            int[] roomDoubled = {room[0]*multiplier, room[1]*multiplier};
+            drawFromCoordToCoord(floorSet, closestairDoubled, roomDoubled);
         }
         else if (toFloor == '2'){
             floorSet.setImageResource(R.drawable.floortwo);

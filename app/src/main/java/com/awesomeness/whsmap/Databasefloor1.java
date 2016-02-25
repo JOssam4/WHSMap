@@ -69,7 +69,7 @@ public class Databasefloor1 {
     public static int[] BStair = {264, 421};
     public static int[] RStair = {477, 308};
     public static int[] BandStair = {450, 205};
-    public static int[] TStair = {254, 28};
+    public static int[] TStair = {260, 28};
     public static int[] GStair = {148, 41};
 
     public static HashMap<Integer, int[]> elements = new HashMap<Integer, int[]>();

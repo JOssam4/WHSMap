@@ -202,9 +202,21 @@ public class MainActivity extends AppCompatActivity{
                                 floorSet.setImageResource(R.drawable.floortwo);
                                 int[] coordFrom = Databasefloor2.elements.get(firstRoom);
                                 int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
-                                int[] coordTo = Databasefloor2.stairs.get("Main");
-                                int[] coordToDoubled = {coordTo[0] * multiplier, coordTo[1] * multiplier};
-                                drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
+                                int[][] stairCoords = Databasefloor2.stairs.values().toArray(new int[Databasefloor2.stairs.values().size()][]);
+                                if ((floorNum2 == '3')||(floorNum2 == '4')){
+                                    ArrayList<int[]> vals = new ArrayList<>();
+                                    for (int[] each : stairCoords) {
+                                        if (!(Arrays.toString(each).equals("[238, 20]"))) {
+                                            System.out.println("deleted hi");
+                                            vals.add(each);
+                                        }
+                                    }
+                                    //System.out.println("deleted: "+vals);
+                                    stairCoords = vals.toArray(new int[vals.size()][]);
+                                }
+                                int[] closest = findClosestStairCase(coordFrom, stairCoords);
+                                int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
+                                drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
                             } else if (floorNum1 == '3') {
                                 floorSet.setImageResource(R.drawable.floorthree);
                                 System.out.println("num2 = "+floorNum2);

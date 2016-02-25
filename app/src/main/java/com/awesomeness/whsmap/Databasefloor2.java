@@ -47,7 +47,7 @@ public class Databasefloor2 {
     public static int[] LStair = {140, 294};
     public static int[] BStair = {248,392};
     public static int[] RStair = {449,284};
-    public static int[] TStair = {238, 20};
+    public static int[] TStair = {238, 20}; //same thing as gym stair.
 
 
     public static void putInBase(){

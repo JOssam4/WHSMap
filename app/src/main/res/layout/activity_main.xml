@@ -122,7 +122,7 @@
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:id="@+id/imageLooker"
-            android:src="@drawable/floorone" />
+            android:src="@drawable/flrone" />
 
         <com.awesomeness.whsmap.TouchImageView
                 android:layout_width="wrap_content"

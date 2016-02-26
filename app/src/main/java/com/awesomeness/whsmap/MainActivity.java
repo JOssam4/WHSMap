@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity{
                 // TODO Auto-generated method stub
                 if ((query.charAt(0) == '1') && (textbox.getText().toString().charAt(0) == '1')) {
                     if ((Databasefloor1.doesExist(Integer.parseInt(search.getQuery().toString()))) && Databasefloor1.doesExist(Integer.parseInt(textbox.getText().toString()))) {
-                        floorSet.setImageResource(R.drawable.floorone);
+                        floorSet.setImageResource(R.drawable.flrone);
                         int[] coordFrom = Databasefloor1.elements.get(Integer.parseInt(textbox.getText().toString()));
                         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
                         int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 else if((query.charAt(0) == '2') && (textbox.getText().toString().charAt(0) == '2')){
                     if ((Databasefloor2.doesExist(Integer.parseInt(search.getQuery().toString()))) && Databasefloor2.doesExist(Integer.parseInt(textbox.getText().toString()))){
-                        floorSet.setImageResource(R.drawable.floortwo);
+                        floorSet.setImageResource(R.drawable.flrtwo);
                         int[] coordFrom = Databasefloor2.elements.get(Integer.parseInt(textbox.getText().toString()));
                         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
                         int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 else if((query.charAt(0) == '3') && (textbox.getText().toString().charAt(0) == '3')){
                     if ((Databasefloor3.doesExist(Integer.parseInt(search.getQuery().toString()))) && Databasefloor3.doesExist(Integer.parseInt(textbox.getText().toString()))){
-                        floorSet.setImageResource(R.drawable.floorthree);
+                        floorSet.setImageResource(R.drawable.flrthree);
                         int[] coordFrom = Databasefloor3.elements.get(Integer.parseInt(textbox.getText().toString()));
                         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
                         int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 else if((query.charAt(0) == '4') && (textbox.getText().toString().charAt(0) == '4')){
                     if ((Databasefloor4.doesExist((Integer.parseInt(search.getQuery().toString())))) && Databasefloor4.doesExist(Integer.parseInt(textbox.getText().toString()))){
-                        floorSet.setImageResource(R.drawable.floorfour);
+                        floorSet.setImageResource(R.drawable.flrfour);
                         int[] coordFrom = Databasefloor4.elements.get(Integer.parseInt(textbox.getText().toString()));
                         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
                         int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity{
                             int multiplier = (finalWidth > 568 && finalHeight > 441) ? 3 : 1;
                             System.out.println("garl");
                             if (floorNum1 == '1') {
-                                floorSet.setImageResource(R.drawable.floorone);
+                                floorSet.setImageResource(R.drawable.flrone);
                                 int[] coordFrom = Databasefloor1.elements.get(firstRoom);
                                 System.out.println(firstRoom);
                                 int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity{
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, coordToDoubled);
                                 System.out.println("going");
                             } else if (floorNum1 == '2') {
-                                floorSet.setImageResource(R.drawable.floortwo);
+                                floorSet.setImageResource(R.drawable.flrtwo);
                                 int[] coordFrom = Databasefloor2.elements.get(firstRoom);
                                 int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
                                 int[][] stairCoords = Databasefloor2.stairs.values().toArray(new int[Databasefloor2.stairs.values().size()][]);
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity{
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
                             } else if (floorNum1 == '3') {
-                                floorSet.setImageResource(R.drawable.floorthree);
+                                floorSet.setImageResource(R.drawable.flrthree);
                                 System.out.println("num2 = "+floorNum2);
                                 int[] coordFrom = Databasefloor3.elements.get(firstRoom);
                                 int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity{
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
                             } else {
-                                floorSet.setImageResource(R.drawable.floorfour);
+                                floorSet.setImageResource(R.drawable.flrfour);
                                 int[] coordFrom = Databasefloor4.elements.get(firstRoom);
                                 int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
                                 int[][] stairCoords = Databasefloor4.stairs.values().toArray(new int[Databasefloor4.stairs.values().size()][]);
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity{
                                 int[] closestM = {closest[0]*multiplier, closest[1]*multiplier};
                                 drawFromCoordToCoord(floorSet, coordFromDoubled, closestM);
 
-                                //floorSet.setImageResource(R.drawable.floorfour);
+                                //floorSet.setImageResource(R.drawable.flrfour);
                                 //int[] coordFrom = Databasefloor4.elements.get(firstRoom);
                                 //int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
 //
@@ -318,7 +318,7 @@ public class MainActivity extends AppCompatActivity{
         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
         char toFloor = search.getQuery().charAt(0);
         if(toFloor == '1'){
-            floorSet.setImageResource(R.drawable.floorone);
+            floorSet.setImageResource(R.drawable.flrone);
             int[] lastStairCoord = closest;
             ArrayList<int[]> stairCoords = new ArrayList<>();
             for (int[] each : Databasefloor1.stairs.values()){
@@ -333,26 +333,62 @@ public class MainActivity extends AppCompatActivity{
             drawFromCoordToCoord(floorSet, closestairDoubled, roomDoubled);
         }
         else if (toFloor == '2'){
-            floorSet.setImageResource(R.drawable.floortwo);
+            floorSet.setImageResource(R.drawable.flrtwo);
+            int[] lastStairCoord = closest;
+            ArrayList<int[]> stairCoords = new ArrayList<>();
+            for (int[] each : Databasefloor2.stairs.values()){
+                stairCoords.add(each);
+            }
+            int[][] vals = stairCoords.toArray(new int[stairCoords.size()][]);
+            System.out.println(Arrays.deepToString(vals));
+            int[] closestair = findClosestStairCase(lastStairCoord, vals);
+            int[] closestairDoubled = {closestair[0]*multiplier, closestair[1]*multiplier};
+            int[] room = Databasefloor2.elements.get(Integer.parseInt(search.getQuery().toString()));
+            int[] roomDoubled = {room[0]*multiplier, room[1]*multiplier};
+            drawFromCoordToCoord(floorSet, closestairDoubled, roomDoubled);
         }
         else if (toFloor == '3'){
-            floorSet.setImageResource(R.drawable.floorthree);
+            floorSet.setImageResource(R.drawable.flrthree);
+            int[] lastStairCoord = closest;
+            ArrayList<int[]> stairCoords = new ArrayList<>();
+            for (int[] each : Databasefloor3.stairs.values()){
+                stairCoords.add(each);
+            }
+            int[][] vals = stairCoords.toArray(new int[stairCoords.size()][]);
+            System.out.println(Arrays.deepToString(vals));
+            int[] closestair = findClosestStairCase(lastStairCoord, vals);
+            int[] closestairDoubled = {closestair[0]*multiplier, closestair[1]*multiplier};
+            int[] room = Databasefloor3.elements.get(Integer.parseInt(search.getQuery().toString()));
+            int[] roomDoubled = {room[0]*multiplier, room[1]*multiplier};
+            drawFromCoordToCoord(floorSet, closestairDoubled, roomDoubled);
         }
         else{
-            floorSet.setImageResource(R.drawable.floorfour);
+            floorSet.setImageResource(R.drawable.flrfour);
+            int[] lastStairCoord = closest;
+            ArrayList<int[]> stairCoords = new ArrayList<>();
+            for (int[] each : Databasefloor4.stairs.values()){
+                stairCoords.add(each);
+            }
+            int[][] vals = stairCoords.toArray(new int[stairCoords.size()][]);
+            System.out.println(Arrays.deepToString(vals));
+            int[] closestair = findClosestStairCase(lastStairCoord, vals);
+            int[] closestairDoubled = {closestair[0]*multiplier, closestair[1]*multiplier};
+            int[] room = Databasefloor4.elements.get(Integer.parseInt(search.getQuery().toString()));
+            int[] roomDoubled = {room[0]*multiplier, room[1]*multiplier};
+            drawFromCoordToCoord(floorSet, closestairDoubled, roomDoubled);
         }
     }
 
     public void oneClick(View view) {
         if (!(floorSet == (TouchImageView) image1)){
-            floorSet.setImageResource(R.drawable.floorone);
+            floorSet.setImageResource(R.drawable.flrone);
     }
     }
 
     public void twoClick(View view) {
         if (!(floorSet == (TouchImageView)image2)) {
 
-            floorSet.setImageResource(R.drawable.floortwo);
+            floorSet.setImageResource(R.drawable.flrtwo);
         }
     }
 
@@ -360,13 +396,13 @@ public class MainActivity extends AppCompatActivity{
     public void threeClick(View view) {
         if (!(floorSet == (TouchImageView)image3)) {
 
-            floorSet.setImageResource(R.drawable.floorthree);
+            floorSet.setImageResource(R.drawable.flrthree);
         }
     }
 
     public void fourClick(View view) {
         if (!(floorSet == (TouchImageView)image4)) {
-            floorSet.setImageResource(R.drawable.floorfour);
+            floorSet.setImageResource(R.drawable.flrfour);
 
         }
     }

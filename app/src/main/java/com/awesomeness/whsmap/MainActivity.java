@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity{
                 // TODO Auto-generated method stub
                 if ((query.charAt(0) == '1') && (textbox.getText().toString().charAt(0) == '1')) {
                     if ((Databasefloor1.doesExist(Integer.parseInt(search.getQuery().toString()))) && Databasefloor1.doesExist(Integer.parseInt(textbox.getText().toString()))) {
-                        floorSet.setImageResource(R.drawable.flrone);
+                        floorSet.setImageResource(R.drawable.flooro);
                         int[] coordFrom = Databasefloor1.elements.get(Integer.parseInt(textbox.getText().toString()));
                         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
                         int[] coordFromDoubled = {coordFrom[0]*multiplier, coordFrom[1]*multiplier};
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity{
                             int multiplier = (finalWidth > 568 && finalHeight > 441) ? 3 : 1;
                             System.out.println("garl");
                             if (floorNum1 == '1') {
-                                floorSet.setImageResource(R.drawable.flrone);
+                                floorSet.setImageResource(R.drawable.flooro);
                                 int[] coordFrom = Databasefloor1.elements.get(firstRoom);
                                 System.out.println(firstRoom);
                                 int[] coordFromDoubled = {coordFrom[0] * multiplier, coordFrom[1] * multiplier};
@@ -318,7 +318,7 @@ public class MainActivity extends AppCompatActivity{
         int multiplier = (finalWidth > 568 && finalHeight > 441)? 3:1;
         char toFloor = search.getQuery().charAt(0);
         if(toFloor == '1'){
-            floorSet.setImageResource(R.drawable.flrone);
+            floorSet.setImageResource(R.drawable.flooro);
             int[] lastStairCoord = closest;
             ArrayList<int[]> stairCoords = new ArrayList<>();
             for (int[] each : Databasefloor1.stairs.values()){
@@ -381,7 +381,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void oneClick(View view) {
         if (!(floorSet == (TouchImageView) image1)){
-            floorSet.setImageResource(R.drawable.flrone);
+            floorSet.setImageResource(R.drawable.flooro);
     }
     }
 
